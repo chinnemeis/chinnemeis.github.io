@@ -2,13 +2,13 @@
 <html>
 
     <head>
-        <title>My experiment</title>
+        <title>Experiment</title>
         <!-- Load jQuery -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <!-- Load the jspsych library and plugins -->
         <script src="Scripts/jspsych.js"></script>
         <script src="Scripts/plugins/jspsych-text.js"></script>
-        <script src="Scripts/plugins/jspsych-single-stim.js"></script>
+        <script src="Scripts/plugins/jspsych-categorize.js"></script>
         <!-- Load the stylesheet -->
         <link href="experiment.css" type="text/css" rel="stylesheet"></link>
     </head>
@@ -20,8 +20,65 @@
     <script>
         // Experiment parameters
         var n_trials = 4;
-        var stimuli = ["stimuli/HD_1_1.jpg", "stimuli/LD_2_3.jpg", "stimuli/HD_3_5.jpg", "stimuli/LD_2_2.jpg"];
-        var stimuli_types = ["congruent", "congruent", "incongruent", "incongruent"];
+        var gexes = ["stimuli/LD_2_2.jpg", "stimuli/LD_2_3.jpg", "stimuli/LD_2_4.jpg", "stimuli/LD_2_5.jpg",
+		              "stimuli/LD_3_2.jpg", "stimuli/LD_3_3.jpg", "stimuli/HD_3_4.jpg", "stimuli/HD_3_5.jpg"];
+		var daxes = ["stimuli/LD_4_2.jpg", "stimuli/LD_4_3.jpg", "stimuli/LD_4_4.jpg", "stimuli/LD_4_5.jpg",
+		              "stimuli/LD_5_2.jpg", "stimuli/LD_5_3.jpg", "stimuli/HD_5_4.jpg", "stimuli/HD_5_5.jpg"];		
+			
+		var gexArray = [];
+		var daxArray = [];
+			
+		for (var i = 0; i <= 15; i++) {
+		var gex4ex = [];
+		
+		var dax4ex = []; 
+		
+		for (var j = 0; j <= 3; j++) {
+			var random_choice = Math.floor(Math.random() * gexes.length);			
+			gex4ex.push(gexes[random_choice]);
+			};
+			
+		for (var k = 0; k <= 3; k++) {
+			var random_choice = Math.floor(Math.random() * daxes.length);			
+			dax4ex.push(daxes[random_choice]);
+			};
+			
+		gexArray.push(gex4ex);
+		
+		daxArray.push(dax4ex); 
+		}
+		
+		var stimArray = []; 
+		var allStim = gexes.concat(daxes); 
+		
+		for (var i = 0; i <= 15; i++) {
+			var exemplars = "<table style='position:absolute; top:50px; left: 50px; width:900px'>" +
+							"<tr>" +
+							"<td height = '300' style='border:solid'>" +
+							"<img STYLE='position:absolute; TOP:20px; LEFT:20px; WIDTH:120px; HEIGHT:120px'" + "src=" + gexArray[i][0] + ">" +
+							"<img STYLE='position:absolute; TOP:20px; LEFT:140px; WIDTH:120px; HEIGHT:120px'" + "src=" + gexArray[i][1] + ">" +
+							"<img STYLE='position:absolute; TOP:140px; LEFT:20px; WIDTH:120px; HEIGHT:120px'" + "src=" + gexArray[i][2] + ">" +
+							"<img STYLE='position:absolute; TOP:140px; LEFT:140px; WIDTH:120px; HEIGHT:120px'" + "src=" + gexArray[i][3] + ">" +
+							"<DIV style='position: absolute; top:260px; left:80px; width:200px; height:25px'>Gex Cells</DIV>" +
+							"</td>" +
+							"<td height = '300' style='border:solid white'>" +
+							"<img STYLE='position:absolute; TOP:80px; LEFT:360px; WIDTH:120px; HEIGHT:120px'" + "src=" + allStim[i] + ">" +
+							"<DIV style='position: absolute; top:180px; left:440px; width:200px; height:25px'>?</DIV>" +
+							"<DIV style='position: absolute; top:320px; left:380px; width:200px; height:25px'>Press D if the middle cell is a Dax. Press G if it is a Gex.</DIV>" +
+							"</td>" +
+							"<td height = '300' style='border:solid'>" +
+							"<img STYLE='position:absolute; TOP:20px; LEFT:620px; WIDTH:120px; HEIGHT:120px'" + "src=" + daxArray[i][0] + ">" +
+							"<img STYLE='position:absolute; TOP:20px; LEFT:740px; WIDTH:120px; HEIGHT:120px'" + "src=" + daxArray[i][1] + ">" +
+							"<img STYLE='position:absolute; TOP:140px; LEFT:620px; WIDTH:120px; HEIGHT:120px'" + "src=" + daxArray[i][2] + ">" +
+							"<img STYLE='position:absolute; TOP:140px; LEFT:740px; WIDTH:120px; HEIGHT:120px'" + "src=" + daxArray[i][3] + ">" +
+							"<DIV style='position: absolute; top:260px; left:680px; width:200px; height:25px'>Dax Cells</DIV>" +
+							"</td>" +  
+							"</tr>" +
+							"</table>"
+			stimArray.push(exemplars);
+			}
+		 
+         var stimuli_types = ["congruent", "congruent", "incongruent", "incongruent"];  
 
         // Experiment Instructions
         var welcome_message = "<div id='instructions'><p>Welcome to the " +
@@ -42,9 +99,9 @@
         var opt_data = [];
 
         for (var i = 0; i < n_trials; i++) {
-            var random_choice = Math.floor(Math.random() * stimuli.length);
+            var random_choice = Math.floor(Math.random() * stimArray.length);
 
-            stimuli_random_order.push(stimuli[random_choice]);
+            stimuli_random_order.push(stimArray[random_choice]);
             opt_data.push({
                 "stimulus_type": stimuli_types[random_choice]
             });
@@ -58,7 +115,7 @@
             };
 
         var test_block = {
-                type: "single-stim",
+                type: "categorize",
                 stimuli: stimuli_random_order,
                 choices: [37, 39],
                 data: opt_data
