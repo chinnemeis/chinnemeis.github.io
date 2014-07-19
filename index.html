@@ -19,7 +19,6 @@
 
     <script>
         // Experiment parameters
-        var n_trials = 4;
         var gexes = ["stimuli/LD_2_2.jpg", "stimuli/LD_2_3.jpg", "stimuli/LD_2_4.jpg", "stimuli/LD_2_5.jpg",
 		              "stimuli/LD_3_2.jpg", "stimuli/LD_3_3.jpg", "stimuli/HD_3_4.jpg", "stimuli/HD_3_5.jpg"];
 		var daxes = ["stimuli/LD_4_2.jpg", "stimuli/LD_4_3.jpg", "stimuli/LD_4_4.jpg", "stimuli/LD_4_5.jpg",
@@ -78,7 +77,7 @@
 			stimArray.push(exemplars);
 			}
 		 
-         var stimuli_types = ["congruent", "congruent", "incongruent", "incongruent"];  
+         // var stimuli_types = ["congruent", "congruent", "incongruent", "incongruent"];  
 
         // Experiment Instructions
         var welcome_message = "<div id='instructions'><p>Welcome to the " +
@@ -96,15 +95,12 @@
 
         // Generating Random Order for Stimuli
         var stimuli_random_order = [];
-        var opt_data = [];
+        // var opt_data = [];
 
         for (var i = 0; i < n_trials; i++) {
             var random_choice = Math.floor(Math.random() * stimArray.length);
 
-            stimuli_random_order.push(stimArray[random_choice]);
-            opt_data.push({
-                "stimulus_type": stimuli_types[random_choice]
-            });
+            stimuli_random_order.push(stimArray[random_choice]);            
         }
 
         // Define experiment blocks
@@ -117,8 +113,8 @@
         var test_block = {
                 type: "categorize",
                 stimuli: stimuli_random_order,
-                choices: [37, 39],
-                key_answer: [37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37]
+				key_answer: [37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37]
+                choices: [37, 39]                
             };
 
         var debrief_block = {
