@@ -28,17 +28,17 @@
 			
 		var gexArray = [];
 		var daxArray = [];
-			
+		// picking random exemplars for all trials	
 		for (var i = 0; i <= 15; i++) {
 		var gex4ex = [];
 		
 		var dax4ex = []; 
-		
+		// four random gexes
 		for (var j = 0; j <= 3; j++) {
 			var random_choice = Math.floor(Math.random() * gexes.length);			
 			gex4ex.push(gexes[random_choice]);
 			};
-			
+		// four random daxes	
 		for (var k = 0; k <= 3; k++) {
 			var random_choice = Math.floor(Math.random() * daxes.length);			
 			dax4ex.push(daxes[random_choice]);
@@ -51,8 +51,7 @@
 		
 		var stimArray = []; 
 		var allStim = gexes.concat(daxes); 
-		var answers = []; 
-		
+		// function that generates html code for each stimulus: basically, a table. Puts code in an array.  
 		for (var i = 0; i <= 15; i++) {
 			var exemplars = "<div id='stimulus'><p>" + "<table style='position:absolute; top:50px; left: 50px; width:900px'>" +
 							"<tr>" +
@@ -89,6 +88,7 @@
             "of two different kinds of cells, 'daxes' and 'gexes', " +
             "as well as a mystery cell.</p><p>Indicate whether the mystery cell " +
             "is a dax or a gex by pressing 'd' for dax and 'g' for gex. " + "</p>" +
+			"<p>In the top left corner of the screen, you will be told whether you were correct or wrong.</p>"
 			"<p>Press Enter to begin.</p>" 
 
         var debrief = "<div id='instructions'><p>Thank you for " +
@@ -97,7 +97,11 @@
         // Generating Random Order for Stimuli
         var stimuli_random_order = stimArray;
 		var opt_data = [71, 71, 71, 71, 71, 71, 71, 71, 68, 68, 68, 68, 68, 68, 68, 68]
-		
+		// function I copped from the Internet for making random permutations of arrays.
+		// modified it such that it rearranged both the stimuli and their answers simultaneously
+		// in a corresponding manner. The way I set up the stimuli before arranging
+		// them, all of the gexes come first, and then the daxes. Hence, I ensured that
+		// each stimulus was represented once. 
 		function doubleShuffle(arrayOne, arrayTwo) {
   var currentIndex = arrayOne.length
     , temporaryValue
@@ -136,6 +140,8 @@
                 stimuli: stimuli_random_order,
 				key_answer: opt_data,
                 choices: [68, 71],
+				correct_text: "<p class='prompt'>Correct, this is a %ANS%.</p>",
+				incorrect_text: "<p class='prompt'>Incorrect, this is a %ANS%.</p>",
 				is_html: true
             };
 
