@@ -19,7 +19,7 @@
 
     <script type="text/javascript">
         // Experiment parameters
-		var n_trials = 16
+		var n_trials = 1
         var gexes = ["stimuli/LD_2_2.jpg", "stimuli/LD_2_3.jpg", "stimuli/LD_2_4.jpg", "stimuli/LD_2_5.jpg",
 		              "stimuli/LD_3_2.jpg", "stimuli/LD_3_3.jpg", "stimuli/HD_3_4.jpg", "stimuli/HD_3_5.jpg"];
 		var daxes = ["stimuli/LD_4_2.jpg", "stimuli/LD_4_3.jpg", "stimuli/LD_4_4.jpg", "stimuli/LD_4_5.jpg",
@@ -28,7 +28,7 @@
 		var gexArray = [];
 		var daxArray = [];
 			
-		for (var i = 0; i <= 15; i++) {
+		for (var i = 0; i <= 1; i++) {
 		var gex4ex = [];
 		
 		var dax4ex = []; 
@@ -51,7 +51,7 @@
 		var stimArray = []; 
 		var allStim = gexes.concat(daxes); 
 		
-		for (var i = 0; i <= 15; i++) {
+		for (var i = 0; i <= 1; i++) {
 			var exemplars = "<table style='position:absolute; top:50px; left: 50px; width:900px'>" +
 							"<tr>" +
 							"<td height = '300' style='border:solid'>" +
@@ -113,7 +113,7 @@
         var test_block = {
                 type: "categorize",
                 stimuli: stimuli_random_order,
-				key_answer: [37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37],
+				key_answer: [37],
                 choices: [37, 39]                
             };
 
