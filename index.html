@@ -23,7 +23,8 @@
         var gexes = ["stimuli/LD_2_2.jpg", "stimuli/LD_2_3.jpg", "stimuli/LD_2_4.jpg", "stimuli/LD_2_5.jpg",
 		              "stimuli/LD_3_2.jpg", "stimuli/LD_3_3.jpg", "stimuli/HD_3_4.jpg", "stimuli/HD_3_5.jpg"];
 		var daxes = ["stimuli/LD_4_2.jpg", "stimuli/LD_4_3.jpg", "stimuli/LD_4_4.jpg", "stimuli/LD_4_5.jpg",
-		              "stimuli/LD_5_2.jpg", "stimuli/LD_5_3.jpg", "stimuli/HD_5_4.jpg", "stimuli/HD_5_5.jpg"];		
+		              "stimuli/LD_5_2.jpg", "stimuli/LD_5_3.jpg", "stimuli/HD_5_4.jpg", "stimuli/HD_5_5.jpg"];
+		var stimuli_types = ["Dax", "Gex"]; 
 			
 		var gexArray = [];
 		var daxArray = [];
@@ -50,6 +51,7 @@
 		
 		var stimArray = []; 
 		var allStim = gexes.concat(daxes); 
+		var answers = []; 
 		
 		for (var i = 0; i <= 15; i++) {
 			var exemplars = "<div id='stimulus'><p>" + "<table style='position:absolute; top:50px; left: 50px; width:900px'>" +
@@ -75,7 +77,7 @@
 							"</td>" +  
 							"</tr>" +
 							"</table>" + "</p></div>"
-			stimArray.push(exemplars);
+			stimArray.push(exemplars);			
 			}
 		  
 
@@ -94,11 +96,20 @@
 
         // Generating Random Order for Stimuli
         var stimuli_random_order = [];
+		var opt_data = []; 
 
         for (var i = 0; i < n_trials; i++) {
             var random_choice = Math.floor(Math.random() * stimArray.length);
 
-            stimuli_random_order.push(stimArray[random_choice]);            
+            stimuli_random_order.push(stimArray[random_choice]);
+			if (random_choice <= 7)
+			{
+			opt_data.push(71)
+			}
+			else
+			{
+			opt_data.push(68)
+			}
         }
 
         // Define experiment blocks
@@ -112,7 +123,7 @@
                 type: "categorize",
                 stimuli: stimuli_random_order,
 				key_answer: [37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37],
-                choices: [37, 39],
+                choices: [68, 71],
 				is_html: true
             };
 
