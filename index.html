@@ -126,7 +126,14 @@
         jsPsych.init({
             display_element: $('#jspsych_target'),
             experiment_structure: [instruction_block, test_block, debrief_block],
-			jsPsych.saveCSVdata("demo_experiment_data.csv")
+			on_finish: function(data) {
+                $("#jspsych_target").append($('<pre>', {
+                    html: jsPsych.dataAsCSV()
+                }));
+
+                jsPsych.saveCSVdata("data.csv");
+            }
         });
+			 
     </script>
 </html>
