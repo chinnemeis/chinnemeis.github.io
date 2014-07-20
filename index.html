@@ -125,12 +125,7 @@
 
         jsPsych.init({
             display_element: $('#jspsych_target'),
-            experiment_structure: [instruction_block, test_block, debrief_block],
-            on_finish: function(data) {
-                $("#jspsych_target").append($('<pre>', {
-                    text: JSON.stringify(data, undefined, 2)
-                }));
-            }
+            experiment_structure: [instruction_block, test_block, debrief_block]            
         });
     </script>
 </html>
