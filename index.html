@@ -95,24 +95,34 @@
             "participating!  Press enter to see the data.</p></div>";
 
         // Generating Random Order for Stimuli
-        var stimuli_random_order = [];
-		var opt_data = []; 
-		var repeatPreventer = [] 
+        var stimuli_random_order = stimArray;
+		var opt_data = [71, 71, 71, 71, 71, 71, 71, 71, 68, 68, 68, 68, 68, 68, 68, 68]
+		
+		function doubleShuffle(arrayOne, arrayTwo) {
+  var currentIndex = arrayOne.length
+    , temporaryValue
+    , randomIndex
+    ;
 
-        for (var i = 0; i < n_trials; i++) {
-            var random_choice = Math.floor(Math.random() * stimArray.length);
-			
-            stimuli_random_order.push(stimArray[random_choice]);
-			
-			if (random_choice <= 7)
-			{
-			opt_data.push(71)
-			}
-			else
-			{
-			opt_data.push(68)
-			}
-        }
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = arrayOne[currentIndex];
+    arrayOne[currentIndex] = arrayOne[randomIndex];
+    arrayOne[randomIndex] = temporaryValue;
+	
+	temporaryValue = arrayTwo[currentIndex];
+    arrayTwo[currentIndex] = arrayTwo[randomIndex];
+    arrayTwo[randomIndex] = temporaryValue;
+  }
+}
+
+        doubleShuffle(stimuli_random_order, opt_data)
 
         // Define experiment blocks
         var instruction_block = {
