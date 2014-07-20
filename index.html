@@ -97,11 +97,13 @@
         // Generating Random Order for Stimuli
         var stimuli_random_order = [];
 		var opt_data = []; 
+		var repeatPreventer = [] 
 
         for (var i = 0; i < n_trials; i++) {
             var random_choice = Math.floor(Math.random() * stimArray.length);
-
+			
             stimuli_random_order.push(stimArray[random_choice]);
+			
 			if (random_choice <= 7)
 			{
 			opt_data.push(71)
