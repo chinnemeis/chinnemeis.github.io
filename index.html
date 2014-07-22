@@ -164,10 +164,8 @@
             experiment_structure: [instruction_block, test_block, debrief_block],
 			on_finish: function(data) {
                 $("#jspsych-categorize-stimulus").append($('<pre>', {
-                    html: jsPsych.dataAPI.dataAsCSV()
+                    html: jsPsych.dataAPI.localSave("data", 'csv')
                 }));
-
-                jsPsych.dataAPI.localSave("data", 'csv');
             }
         });
 			 
