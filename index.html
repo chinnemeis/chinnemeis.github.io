@@ -98,12 +98,14 @@
         // Generating Random Order for Stimuli
         var stimuli_random_order = stimArray;
 		var opt_data = [71, 71, 71, 71, 71, 71, 71, 71, 68, 68, 68, 68, 68, 68, 68, 68]
+		var text_answers = ["Gex", "Gex", "Gex", "Gex", "Gex", "Gex", "Gex", "Gex",
+							"Dax", "Dax", "Dax", "Dax", "Dax", "Dax", "Dax", "Dax"]
 		// function I copped from the Internet for making random permutations of arrays.
 		// modified it such that it rearranged both the stimuli and their answers simultaneously
 		// in a corresponding manner. The way I set up the stimuli before arranging
 		// them, all of the gexes come first, and then the daxes. Hence, I ensured that
 		// each stimulus was represented once. 
-		function doubleShuffle(arrayOne, arrayTwo) {
+		function doubleShuffle(arrayOne, arrayTwo, arrayThree) {
   var currentIndex = arrayOne.length
     , temporaryValue
     , randomIndex
@@ -124,10 +126,14 @@
 	temporaryValue = arrayTwo[currentIndex];
     arrayTwo[currentIndex] = arrayTwo[randomIndex];
     arrayTwo[randomIndex] = temporaryValue;
+	
+	temporaryValue = arrayThree[currentIndex];
+    arrayThree[currentIndex] = arrayThree[randomIndex];
+    arrayThree[randomIndex] = temporaryValue;
   }
 }
 
-        doubleShuffle(stimuli_random_order, opt_data)
+        doubleShuffle(stimuli_random_order, opt_data, text_answers)
 
         // Define experiment blocks
         var instruction_block = {
@@ -140,9 +146,10 @@
                 type: "categorize",
                 stimuli: stimuli_random_order,
 				key_answer: opt_data,
+				text_answer: text_answers,
                 choices: [68, 71],
-				correct_text: "<p class='prompt'>That is correct.</p>",
-				incorrect_text: "<p class='prompt'>Sorry, that was not correct.</p>",
+				correct_text: "<p class='prompt'>Correct! This is a %ANS%.</p>",
+				incorrect_text: "<p class='prompt'>Sorry, that was not correct. This is a %ANS%</p>",
 				is_html: true
             };
 
