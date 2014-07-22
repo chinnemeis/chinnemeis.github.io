@@ -149,7 +149,7 @@
 				text_answer: text_answers,
                 choices: [68, 71],
 				correct_text: "<p class='prompt'>Correct! This is a %ANS%.</p>",
-				incorrect_text: "<p class='prompt'>Sorry, that was not correct. This is a %ANS%</p>",
+				incorrect_text: "<p class='prompt'>Sorry, that was not correct. This is a %ANS%.</p>",
 				is_html: true
             };
 
@@ -164,7 +164,7 @@
             experiment_structure: [instruction_block, test_block, debrief_block],
 			on_finish: function(data) {
                 $("#jspsych-categorize-stimulus").append($('<pre>', {
-                    html: jsPsych.dataAPI()
+                    html: jsPsych.dataAPI.dataAsCSV()
                 }));
 
                 jsPsych.saveCSVdata("data.csv");
