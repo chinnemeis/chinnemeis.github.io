@@ -66,7 +66,6 @@
 							"<td height = '300' style='border:solid white'>" +
 							"<img STYLE='position:absolute; TOP:80px; LEFT:360px; WIDTH:120px; HEIGHT:120px'" + "src=" + allStim[i] + ">" +
 							"<DIV style='position: absolute; top:180px; left:440px; width:200px; height:25px'>?</DIV>" +
-							"<DIV style='position: absolute; top:320px; left:380px; width:200px; height:25px'>Press D if the middle cell is a Dax. Press G if it is a Gex.</DIV>" +
 							"</td>" +
 							"<td height = '300' style='border:solid'>" +
 							"<img STYLE='position:absolute; TOP:20px; LEFT:620px; WIDTH:120px; HEIGHT:120px'" + "src=" + daxArray[i][0] + ">" +
@@ -150,7 +149,8 @@
                 choices: [68, 71],
 				correct_text: "<p class='prompt'>Correct! This is a %ANS%.</p>",
 				incorrect_text: "<p class='prompt'>Sorry, that was not correct. This is a %ANS%.</p>",
-				is_html: true
+				is_html: true,
+				prompt: "<p class='prompt'>Press D if the middle cell is a Dax. Press G if it is a Gex.</p>"
             };
 
         var debrief_block = {
