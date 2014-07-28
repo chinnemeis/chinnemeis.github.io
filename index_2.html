@@ -161,9 +161,79 @@
 			x3_y3.push(all_pairs[i])
 			}
 			}
-			
-		function pick_pair(listy) {
 		
+		var all_trials = []; 
+		
+		function pick_pair(listy) {
+		for (var i = 0; i < listy.length; i++) {
+		if (listy[i] == "x0_y0") {
+		var random_choice = Math.floor(Math.random() * x0_y0.length);
+		all_trials.push(x0_y0[random_choice]);
+		}
+		else if (listy[i] == "x0_y1") {
+		var random_choice = Math.floor(Math.random() * x0_y1.length);
+		all_trials.push(x0_y1[random_choice]);
+		}
+		else if (listy[i] == "x0_y2") {
+		var random_choice = Math.floor(Math.random() * x0_y2.length);
+		all_trials.push(x0_y2[random_choice]);
+		}
+		else if (listy[i] == "x0_y3") {
+		var random_choice = Math.floor(Math.random() * x0_y3.length);
+		all_trials.push(x0_y3[random_choice]);
+		}
+		else if (listy[i] == "x1_y0") {
+		var random_choice = Math.floor(Math.random() * x1_y0.length);
+		all_trials.push(x1_y0[random_choice]);
+		}
+		else if (listy[i] == "x1_y1") {
+		var random_choice = Math.floor(Math.random() * x1_y1.length);
+		all_trials.push(x1_y1[random_choice]);
+		}
+		else if (listy[i] == "x1_y2") {
+		var random_choice = Math.floor(Math.random() * x1_y2.length);
+		all_trials.push(x1_y2[random_choice]);
+		}
+		else if (listy[i] == "x1_y3") {
+		var random_choice = Math.floor(Math.random() * x1_y3.length);
+		all_trials.push(x1_y3[random_choice]);
+		}
+		else if (listy[i] == "x2_y0") {
+		var random_choice = Math.floor(Math.random() * x2_y0.length);
+		all_trials.push(x2_y0[random_choice]);
+		}
+		else if (listy[i] == "x2_y1") {
+		var random_choice = Math.floor(Math.random() * x2_y1.length);
+		all_trials.push(x2_y1[random_choice]);
+		}
+		else if (listy[i] == "x2_y2") {
+		var random_choice = Math.floor(Math.random() * x2_y2.length);
+		all_trials.push(x2_y2[random_choice]);
+		}
+		else if (listy[i] == "x2_y3") {
+		var random_choice = Math.floor(Math.random() * x2_y3.length);
+		all_trials.push(x2_y3[random_choice]);
+		}
+		else if (listy[i] == "x3_y0") {
+		var random_choice = Math.floor(Math.random() * x3_y0.length);
+		all_trials.push(x3_y0[random_choice]);
+		}
+		else if (listy[i] == "x3_y1") {
+		var random_choice = Math.floor(Math.random() * x3_y1.length);
+		all_trials.push(x3_y1[random_choice]);
+		}
+		else if (listy[i] == "x3_y2") {
+		var random_choice = Math.floor(Math.random() * x3_y2.length);
+		all_trials.push(x3_y2[random_choice]);
+		}
+		else if (listy[i] == "x3_y3") {
+		var random_choice = Math.floor(Math.random() * x3_y3.length);
+		all_trials.push(x3_y3[random_choice]);
+		}
+		else {
+		all_trials.push([]);
+		}
+		}
 		}
 			
         // Experiment Instructions
