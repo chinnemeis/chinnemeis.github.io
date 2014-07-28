@@ -88,7 +88,7 @@
             "of two different kinds of cells, 'daxes' and 'gexes', " +
             "as well as a mystery cell.</p><p>Indicate whether the mystery cell " +
             "is a dax or a gex by pressing 'd' for dax and 'g' for gex. " + "</p>" +
-			"<p>In the lower left corner of the screen, you will be told whether you were correct or wrong.</p>" +
+			"<p>You will be told whether you were correct or wrong.</p>" +
 			"<p>Press Enter to begin.</p>" 
 
         var debrief = "<div id='instructions'><p>Thank you for " +
@@ -147,10 +147,10 @@
 				key_answer: opt_data,
 				text_answer: text_answers,
                 choices: [68, 71],
-				correct_text: "<p class='prompt'>Correct! This is a %ANS%.</p>",
-				incorrect_text: "<p class='prompt'>Sorry, that was not correct. This is a %ANS%.</p>",
+				correct_text: "<p class='prompt'>    Correct! This is a %ANS%.</p>",
+				incorrect_text: "<p class='prompt'>    Sorry, that was not correct. This is a %ANS%.</p>",
 				is_html: true,
-				prompt: "<p class='prompt'>Press D if the middle cell is a Dax. Press G if it is a Gex.</p>"
+				prompt: "<p class='prompt'>    Press D if the middle cell is a Dax. Press G if it is a Gex.</p>"
             };
 
         var debrief_block = {
